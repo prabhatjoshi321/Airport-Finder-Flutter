@@ -17,7 +17,7 @@ class PlacesService{
   var places = <Place>[];
   List data = json.decode(response.body)["results"];
 
-  data.forEach((f) => places.add(new Place(f["icon"], f["name"], f["rating"].toString(), f["vicinity"], f['place_id']));)
+  data.forEach((f) => places.add(new Place(f["icon"], f["name"], f["rating"].toString(), f["vicinity"], f['place_id'])));
   return places;
 
   }
