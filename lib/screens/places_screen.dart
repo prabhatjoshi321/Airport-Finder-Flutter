@@ -1,4 +1,8 @@
+import 'package:first/models/place_model.dart';
 import 'package:flutter/material.dart';
+import 'package:first/services/place_service.dart';
+
+
 
 class PlacesScreen extends StatefulWidget{
 @override
@@ -15,18 +19,39 @@ class PlacesScreenState extends State<PlacesScreen>{
         title: new Text("Nearby Airports"),
       ),
 
-      body:new ListView(
-        children: <Widget>[
-          new ListTile(
-            title: new Text("first item"),
-            trailing:  new Icon(Icons.arrow_forward),
-            ),
-          new ListTile(
-            title: new Text("second item"),
-            trailing:  new Icon(Icons.arrow_forward),
-            ),
-        ],
-      ),
+      body:  _createContent(),
     );
+  }
+
+  Widget _createContent(){
+    if(_places == null){
+      return new Center(
+      child: new CircularProgressIndicator(),
+      );
+    }
+
+    else{
+
+      return new ListView(
+        children: _places.map((f){
+          return new ListTile(
+            title: new Text(f.name),
+            leading: new Image.network(f.icon),
+            subtitle: new Text(f.vicinity),
+          );
+        }).toList(),
+      );
+    }
+  }
+
+List<Place> _places;
+  @override void initState(){
+    super.initState();
+
+    PlacesService.get().getNearbyPlaces().then((data){
+      this.setState((){
+            _places = data;
+      });
+    });
   }
 }
