@@ -1,8 +1,12 @@
+# Airport Finder Flutter
 
-# airport_finder
+| Project Title : **Airport Finder Flutter** |
 
-A new Flutter project.
+This was my **Flutter based** project. The tools used in this project are **Flutter Framework**. This project was made by me to learn about how to fetch and use data from **Google Maps API**. Its main goal was to find nearby airports in your city
+<br />
+<br />
+<br />
+<br />
+<br />
 
-## Getting Started
-
-It is an airport finding app
+#### This project is incomplete as I shifted to more complex projects
